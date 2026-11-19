@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모노 오브제 — 미니멀 리빙 스토어</title>
+    <meta
+      name="description"
+      content="일상의 여백을 채우는 단정한 도자기, 조명, 패브릭 오브제 온라인 스토어"
+    />
+    <meta property="og:title" content="모노 오브제 — 미니멀 리빙 스토어" />
+    <meta
+      property="og:description"
+      content="일상의 여백을 채우는 단정한 도자기, 조명, 패브릭 오브제 온라인 스토어"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=Noto+Serif+KR:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <script>
+      (function () {
+        if (!window.opener || window.opener.closed) return;
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+        var params = new URLSearchParams(search);
+        var code = params.get('code');
+        var error = params.get('error_description') || params.get('error');
+        if (code || error || hash.indexOf('access_token=') !== -1) {
+          window.opener.postMessage(
+            {
+              type: 'SUPABASE_OAUTH_CALLBACK',
+              code: code,
+              error: error,
+              hash: hash,
+            },
+            '*'
+          );
+          window.close();
+        }
+      })();
+    </script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

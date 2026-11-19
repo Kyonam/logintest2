@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>모노 오브제 — 로그인 처리 중</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fafaf9;
+        color: #18181b;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+      }
+      p {
+        font-size: 14px;
+        color: #52525b;
+      }
+    </style>
+  </head>
+  <body>
+    <p>로그인을 마무리하고 있습니다...</p>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var code = params.get('code');
+        var error = params.get('error_description') || params.get('error');
+        var hash = window.location.hash || '';
+
+        if (window.opener && !window.opener.closed) {
+          window.opener.postMessage(
+            {
+              type: 'SUPABASE_OAUTH_CALLBACK',
+              code: code,
+              error: error,
+              hash: hash,
+            },
+            '*'
+          );
+          window.close();
+          return;
+        }
+
+        window.location.replace('/' + window.location.search + hash);
+      })();
+    </script>
+  </body>
+</html>
